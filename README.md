@@ -8,6 +8,7 @@
 * HAVING
 * SELECT
 * ORDER BY
+
 *Date Time Columns can be queried like this:*
 WHERE hiredate >= '20030101'
 
