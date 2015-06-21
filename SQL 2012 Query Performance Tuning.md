@@ -1,5 +1,15 @@
 # SQL SERVER 2012 Query Performance Tuning #
 **Current Status - Page No : 01** 
-* Check the 
+* if you want to read a book on database design with an emphasis on introducing the subject, I recommend reading
+Pro SQL Server 2008 Relational Database Design and Implementation by Louis Davidson et al (Apress, 2008). 
 
-## ##
+##Chapter 1: SQL Query Performance Tuning##
+* Even an application running as a service can consume a good part of the system resources and limit the resources available to SQL Server. For example, applications may be configured to work with the processor at a higher priority than SQL Server. Priority is the weight given to a resource that pushes the processor to give it greater preference when executing.
+* SQL Server process (sqlservr.exe) by default runs at Normal priority, whereas the Windows Task Manager process (taskmgr.exe) runs at High priority. Therefore, to allow SQL Server to maximize the use of available resources, you should look for all the nonessential applications/services running on the SQL Server machine and ensure that they are not acting as resource hogs.
+* You should also look at the configuration of SQL Server, since proper configuration is essential for an optimized application. There is a long list of SQL Server configurations that defines the generic behavior of a SQL Server installation. These configurations can be viewed and modified using a system stored procedure, sp_configure. Many of these configurations can be managed interactively through SQL Server Management Studio.
+* When processes run on a server, even one with multiple processors, at times one process will be waiting on another to complete. You can get a fundamental understanding of the root cause of slowdowns by identifying what is waiting and what is causing it to wait. You can realize this through operating system counters that you access through dynamic management views within SQL Server.
+* Performance tuning is an iterative process where you identify major bottlenecks, attempt to resolve them, measure the impact of your changes, and return to the first step until performance is acceptable. When applying your solutions, you should follow the golden rule of making only one change at a time where possible.Any change usually affects other parts of the system, so you must reevaluate the effect of each change on the performance of the overall system.
+* Instead of tuning a system to the theoretical maximum performance, the goal should be to tune until the system performance is “good enough.” This is a commonly adopted performance tuning approach. The cost investment after such a point usually increases exponentially in comparison to the performance gain. The 80:20 rule works very well: by investing 20 percent of your resources, you may get 80 percent of the possible performance enhancement, but for the remaining 20 percent possible performance gain, you may have to invest an additional 80 percent of resources.
+
+##Chapter 2: System Performance Analysis  ##
+* 
