@@ -1,5 +1,5 @@
 # SQL SERVER 2012 Query Performance Tuning #
-**Current Status - Page No : 01** 
+**Current Status - Page No : 25** 
 * if you want to read a book on database design with an emphasis on introducing the subject, I recommend reading
 Pro SQL Server 2008 Relational Database Design and Implementation by Louis Davidson et al (Apress, 2008). 
 
@@ -12,4 +12,5 @@ Pro SQL Server 2008 Relational Database Design and Implementation by Louis David
 * Instead of tuning a system to the theoretical maximum performance, the goal should be to tune until the system performance is “good enough.” This is a commonly adopted performance tuning approach. The cost investment after such a point usually increases exponentially in comparison to the performance gain. The 80:20 rule works very well: by investing 20 percent of your resources, you may get 80 percent of the possible performance enhancement, but for the remaining 20 percent possible performance gain, you may have to invest an additional 80 percent of resources.
 
 ##Chapter 2: System Performance Analysis  ##
+* System behavior can be either tracked in real time in the form of graphs or captured as a log (called a data collector set) for offline analysis. The preferred mechanism on production servers is to use the log.To run the Performance Monitor tool, execute perfmon from a command prompt, which will open the Performance Monitor suite.
 * 
