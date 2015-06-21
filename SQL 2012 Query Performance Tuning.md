@@ -1,5 +1,5 @@
 # SQL SERVER 2012 Query Performance Tuning #
-**Current Status - Page No : 25** 
+**Current Status - Page No : 30** 
 * if you want to read a book on database design with an emphasis on introducing the subject, I recommend reading
 Pro SQL Server 2008 Relational Database Design and Implementation by Louis Davidson et al (Apress, 2008). 
 * read the Microsoft white paper “SQL Server 2005 Waits and Queues” http://download.microsoft.com/download/4/7/a/47a548b9-249e-484c-abd7-29f31282b04d/Performance_Tuning_Waits_Queues.doc
@@ -19,3 +19,7 @@ Pro SQL Server 2008 Relational Database Design and Implementation by Louis David
 * To get an immediate snapshot of a large amount of data that was formerly available only in Performance Monitor, SQL Server now offers the same data internally through a set of dynamic management views (DMVs) and dynamic management functions (DMFs) collectively referred to as dynamic management objects (DMOs). These are extremely useful mechanisms for capturing a snapshot of the current performance of your system.
 * the 'cntr_type' column in 'sys.dm_os_performance_counters' DMO is documented here: http://msdn.microsoft.com/en-us/library/aa394569(VS.85).aspx
 * **sys.dm_os_wait_stats**. This DMV shows an aggregated view of the threads within SQL Server that are waiting on various resources, collected since the last time SQL Server was started or the counters were reset. One of the most common types of waits is I/O. If you see ASYNCH_I0_C0MPLETI0N, I0_C0MPLETI0N, LOGMGR, WRITELOG, or PAGEIOLATCH in your top ten wait types, you may be experiencing I/O contention, and you now know where to start working.
+* Typically, SQL Server database performance is affected by stress on the following hardware resources: Memory, Disk I/O, Processor, Network.
+* The most common performance problem is usually I/O, either from memory or from the disk.
+* Memory can be a problematic bottleneck because a bottleneck in memory will manifest on other resources, too. This is particularly true for a system running SQL Server. When SQL Server runs out of cache (or memory), a process within SQL Server (called lazy writer) has to work extensively to maintain enough free internal memory pages within SQL Server. This consumes extra CPU cycles and performs additional physical disk I/O to write memory pages back to disk. The good news is that SQL Server 2012 has changed memory management. A single process now manages all memory within SQL Server; this can help to avoid some of the bottlenecks previously encountered because max server memory will be applied to all processes, not just those smaller than 8k in size.
+* 
