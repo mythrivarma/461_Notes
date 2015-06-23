@@ -5,6 +5,7 @@ Pro SQL Server 2008 Relational Database Design and Implementation by Louis David
 * read the Microsoft white paper “SQL Server 2005 Waits and Queues” http://download.microsoft.com/download/4/7/a/47a548b9-249e-484c-abd7-29f31282b04d/Performance_Tuning_Waits_Queues.doc
 * when it comes to wait types, Bob Ward’s repository (collected at http://blogs.msdn.com/b/psssql/archive/2009/11/03/the-sql-server-wait-type-repository.aspx  is a must read.
 * For additional information on how to create counter logs using Performance Monitor, please refer to the Microsoft Knowledge Base article “Performance Tuning Guidelines for Windows Server 2008” at http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/Perf-tun-srv.docx
+* Did SQL Provider Make way for Extended Events GUI in Sql Server 2012??
 * 
 
 ##Chapter 1: SQL Query Performance Tuning##
@@ -43,4 +44,18 @@ While you can see some performance benefits from them in certain situations, it 
 * Recompilations of stored procedures add overhead on the processor. You want to see a value close to 0 for the SOL Re-Compilations/sec counter. If you consistently see nonzero values, then you should use Extended Events to further investigate the stored procedures undergoing recompilations
 
 ##Chapter 3: SQL Query Performance Analysis##
+* Extended Events were introduced in SQL Server 2008, but with no GUI in place and a reasonably complex set of code to set them up, they weren’t used much to capture performance metrics. With SQL Server 2012, a GUI for managing extended events was introduced, making this the preferred mechanism for gathering query performance metrics among other things.
+* An RPC event indicates that the stored procedure was executed using the Remote Procedure Call (RPC) mechanism through an OLEDB command. If a database application executes a stored procedure using the T-SQL EXECUTE statement, then that stored procedure is resolved as a SQL batch rather than as an RPC.
+* A T-SQL batch is a set of SQL queries that are submitted together to SQL Server. A T-SQL batch is usually terminated by a GO command. The GO command is not a T-SQL statement. Instead, the GO command is recognized by the sqlcmd utility, as well as by Management Studio, and it signals the end of a batch. Each SQL query in the batch is considered a T-SQL statement.
+* Statement completion events should be collected judiciously(when we are monitoring using Extended Events), especially on a production system.
+* Once a session (of ExtendedEvents using SSMS) is started on the server, you don’t have to keep Management Studio open any more. You can identify the active sessions by using the dynamic management view sys.dm_xe_sessions. You can stop a specific
+session by executing the stored procedure ALTER EVENT SESSION. To verify that the session is stopped successfully, reexecute the view sys.dm_xe_sessions, and ensure that the output of the view doesn’t contain the named session
+* There are a number of events (in Extended Events) related to debugging SQL Server. These are not available through the Wizard, but you do have access to them through the TSQL command. Do not use them. They are subject to change and are meant for Microsoft internal use only. If you do feel the need to experiment, you need to pay close attention to any of the events that include a break action. This means that should the event fire, it will stop SQL Server at the exact line of code that caused the event to fire. This means your server will be completely offline and in an unknown state. This could lead to a major outage if you were to do it in a production system. It could lead to loss of data and database corruption.
+* Setting up an Extended Events session allows you to collect a lot of data for later use, but the collection can be a little bit expensive, you have to wait on the results, and then you have a lot of data to deal with. If you need to immediately capture performance metrics about your system, especially as they pertain to query performance, then the dynamic management views sys.dm_exec_query_stats for queries and sys.dm_exec_procedure_stats for stored procedures are what you need.
+* To filter the information returned from sys.dm_exec_query_stats, you’ll need to join it with other dynamic management functions such as sys.dm_exec_sql_text, which shows the query text associated with the plan, or sys.dm_query_plan, which has the execution plan for the query
+* You can read directly from the extended events file you can query it using this system function:SELECT * FROM sys.fn_xe_file_target_read_file('C:\Program Files\Microsoft SQL Server\MSSQL11.RANDORI\MSSQL\Log\Query Performance
+Tuning*.xel’, NULL, NULL, NULL); 
+The query returns each extended event as a single row. The data about the event is stored in an XML column, event_data. You’ll need to use XQuery to go against the data directly, but once you do, you can search, sort and aggregate the data captured
+* The costly queries can be categorized into the following two types: • Single execution: An individual execution of the query is costly. • Multiple executions: A query itself may not be costly, but the repeated execution of the query causes pressure on the system resources.
 * 
+
