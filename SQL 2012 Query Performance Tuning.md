@@ -1,9 +1,10 @@
 # SQL SERVER 2012 Query Performance Tuning #
-**Current Status - Page No : 56** 
+**Current Status - Page No : 66** 
 * if you want to read a book on database design with an emphasis on introducing the subject, I recommend reading
 Pro SQL Server 2008 Relational Database Design and Implementation by Louis Davidson et al (Apress, 2008). 
 * read the Microsoft white paper “SQL Server 2005 Waits and Queues” http://download.microsoft.com/download/4/7/a/47a548b9-249e-484c-abd7-29f31282b04d/Performance_Tuning_Waits_Queues.doc
 * when it comes to wait types, Bob Ward’s repository (collected at http://blogs.msdn.com/b/psssql/archive/2009/11/03/the-sql-server-wait-type-repository.aspx  is a must read.
+* For additional information on how to create counter logs using Performance Monitor, please refer to the Microsoft Knowledge Base article “Performance Tuning Guidelines for Windows Server 2008” at http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/Perf-tun-srv.docx
 * 
 
 ##Chapter 1: SQL Query Performance Tuning##
@@ -39,4 +40,7 @@ While you can see some performance benefits from them in certain situations, it 
 * DMOs for CPU Performance: Sys.dm_os_wait_stats, Sys.dm_os_workers and Sys.dm_os_schedulers
 * A way to check for missing indexes is to query the dynamic management view sys.dm_db_missing_index_details.
 * The opposite problem to a missing index is one that is never used. The DMV sys.dm_db_index_usage_stats shows which indexes have been used, at least since the last reboot of the system. You can also view the indexes in use with a lower-level DMV, sys.dm_db_index_operational_stats. It will help to show where indexes are slowing down because of contention or I/O
+* Recompilations of stored procedures add overhead on the processor. You want to see a value close to 0 for the SOL Re-Compilations/sec counter. If you consistently see nonzero values, then you should use Extended Events to further investigate the stored procedures undergoing recompilations
+
+##Chapter 3: SQL Query Performance Analysis##
 * 
