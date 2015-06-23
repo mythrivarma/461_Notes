@@ -1,5 +1,5 @@
 # SQL SERVER 2012 Query Performance Tuning #
-**Current Status - Page No : 38** 
+**Current Status - Page No : 56** 
 * if you want to read a book on database design with an emphasis on introducing the subject, I recommend reading
 Pro SQL Server 2008 Relational Database Design and Implementation by Louis Davidson et al (Apress, 2008). 
 * read the Microsoft white paper “SQL Server 2005 Waits and Queues” http://download.microsoft.com/download/4/7/a/47a548b9-249e-484c-abd7-29f31282b04d/Performance_Tuning_Waits_Queues.doc
@@ -22,7 +22,7 @@ Pro SQL Server 2008 Relational Database Design and Implementation by Louis David
 * Typically, SQL Server database performance is affected by stress on the following hardware resources: Memory, Disk I/O, Processor, Network.
 * The most common performance problem is usually I/O, either from memory or from the disk.
 * Memory can be a problematic bottleneck because a bottleneck in memory will manifest on other resources, too. This is particularly true for a system running SQL Server. When SQL Server runs out of cache (or memory), a process within SQL Server (called lazy writer) has to work extensively to maintain enough free internal memory pages within SQL Server. This consumes extra CPU cycles and performs additional physical disk I/O to write memory pages back to disk. The good news is that SQL Server 2012 has changed memory management. A single process now manages all memory within SQL Server; this can help to avoid some of the bottlenecks previously encountered because max server memory will be applied to all processes, not just those smaller than 8k in size.
-* The performance Counters described in page 30 and their details in subsequent pages, correspond to the DMV sys.dm_os_performance_counters
+* The performance Counters described in page 30 and their details in subsequent pages, correspond to the DMV sys.dm_os_performance_counters. They can also be added from Performance Monitor (perfmon in Run Command) and monitored.
 * **DBCC memorystatus** command also gives you a set of measures of where memory is currently allocated.
 * Frequently used DMVs for Memory Bottlenecks : Sys.dm_os_memory_brokers, Sys.dm_os_memory_clerks, Sys.dm_os_ring_buffers
 * A few of the common resolutions for memory bottlenecks are as follows: • Optimizing application workload • Allocating more memory to SQL Server • Increasing system memory • Changing from a 32-bit to a 64-bit processor • Enabling 3GB of process space • Data Compression
@@ -30,4 +30,13 @@ Pro SQL Server 2008 Relational Database Design and Implementation by Louis David
 * In SQL Server 2012, a 32-bit instance of SQL Server is limited to accessing only 3GB of memory. The limitations on SQL
 Server for memory go from 3GB to a limit of up to 8TB depending on the version of the operating system and the specific processor type.
 * Data compression has a number of excellent benefits for storage and retrieval of information. It has an added benefit that many people aren’t aware of: while compressed information is stored in memory, it remains compressed. This means more information can be moved while using less system memory, increasing your overall memory throughput. All this does come at some cost to the CPU, so you’ll need to keep an eye on that to be sure you’re not just transferring stress.
+* SQL Server can take advantage of multiple filegroups by accessing tables and corresponding nonclustered indexes using separate I/O paths.
+* SQL Server log files should always, when possible, be located on a separate hard disk drive from all other SQL Server database files. Transaction log activity primarily consists of sequential write I/O, unlike the nonsequential (or random) I/O required for the data files. Separating transaction log activity from other nonsequential disk I/O activity can result in I/O performance improvements because it allows the hard disk drives containing log files to concentrate on sequential I/O.
+* The major portion of time required to access data from a hard disk is spent on the physical movement of the disk spindle head to locate the data. Once the data is located, the data is read electronically, which is much faster than the physical movement of the head.
+* As a general rule of thumb, you should try, where possible, to isolate files with the highest I/O from other files with high I/O. This will reduce contention on the disks and possibly improve performance. To identify those files using the most I/O, reference sys.dm_io_virtual_file_stats.
+* Creating a partition moves the segment of data to a particular filegroup and only that filegroup. This provides a massive increase in speed because, when querying against well-defined partitions, only the files with the partitions of data you’re interested in will be accessed during a given query.Just remember that partitions are primarily a manageability feature.
+While you can see some performance benefits from them in certain situations, it shouldn’t be counted on as part of partitioning the data. SQL Server Denali supports up to 15,000 partitions.
+* DMOs for CPU Performance: Sys.dm_os_wait_stats, Sys.dm_os_workers and Sys.dm_os_schedulers
+* A way to check for missing indexes is to query the dynamic management view sys.dm_db_missing_index_details.
+* The opposite problem to a missing index is one that is never used. The DMV sys.dm_db_index_usage_stats shows which indexes have been used, at least since the last reboot of the system. You can also view the indexes in use with a lower-level DMV, sys.dm_db_index_operational_stats. It will help to show where indexes are slowing down because of contention or I/O
 * 
