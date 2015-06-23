@@ -1,5 +1,5 @@
 # SQL SERVER 2012 Query Performance Tuning #
-**Current Status - Page No : 30** 
+**Current Status - Page No : 38** 
 * if you want to read a book on database design with an emphasis on introducing the subject, I recommend reading
 Pro SQL Server 2008 Relational Database Design and Implementation by Louis Davidson et al (Apress, 2008). 
 * read the Microsoft white paper “SQL Server 2005 Waits and Queues” http://download.microsoft.com/download/4/7/a/47a548b9-249e-484c-abd7-29f31282b04d/Performance_Tuning_Waits_Queues.doc
@@ -17,9 +17,17 @@ Pro SQL Server 2008 Relational Database Design and Implementation by Louis David
 ##Chapter 2: System Performance Analysis  ##
 * System behavior can be either tracked in real time in the form of graphs or captured as a log (called a data collector set) for offline analysis. The preferred mechanism on production servers is to use the log.To run the Performance Monitor tool, execute perfmon from a command prompt, which will open the Performance Monitor suite.
 * To get an immediate snapshot of a large amount of data that was formerly available only in Performance Monitor, SQL Server now offers the same data internally through a set of dynamic management views (DMVs) and dynamic management functions (DMFs) collectively referred to as dynamic management objects (DMOs). These are extremely useful mechanisms for capturing a snapshot of the current performance of your system.
-* the 'cntr_type' column in 'sys.dm_os_performance_counters' DMO is documented here: http://msdn.microsoft.com/en-us/library/aa394569(VS.85).aspx
+* the 'cntr_type' column in '**sys.dm_os_performance_counters**' DMO is documented here: http://msdn.microsoft.com/en-us/library/aa394569(VS.85).aspx
 * **sys.dm_os_wait_stats**. This DMV shows an aggregated view of the threads within SQL Server that are waiting on various resources, collected since the last time SQL Server was started or the counters were reset. One of the most common types of waits is I/O. If you see ASYNCH_I0_C0MPLETI0N, I0_C0MPLETI0N, LOGMGR, WRITELOG, or PAGEIOLATCH in your top ten wait types, you may be experiencing I/O contention, and you now know where to start working.
 * Typically, SQL Server database performance is affected by stress on the following hardware resources: Memory, Disk I/O, Processor, Network.
 * The most common performance problem is usually I/O, either from memory or from the disk.
 * Memory can be a problematic bottleneck because a bottleneck in memory will manifest on other resources, too. This is particularly true for a system running SQL Server. When SQL Server runs out of cache (or memory), a process within SQL Server (called lazy writer) has to work extensively to maintain enough free internal memory pages within SQL Server. This consumes extra CPU cycles and performs additional physical disk I/O to write memory pages back to disk. The good news is that SQL Server 2012 has changed memory management. A single process now manages all memory within SQL Server; this can help to avoid some of the bottlenecks previously encountered because max server memory will be applied to all processes, not just those smaller than 8k in size.
+* The performance Counters described in page 30 and their details in subsequent pages, correspond to the DMV sys.dm_os_performance_counters
+* **DBCC memorystatus** command also gives you a set of measures of where memory is currently allocated.
+* Frequently used DMVs for Memory Bottlenecks : Sys.dm_os_memory_brokers, Sys.dm_os_memory_clerks, Sys.dm_os_ring_buffers
+* A few of the common resolutions for memory bottlenecks are as follows: • Optimizing application workload • Allocating more memory to SQL Server • Increasing system memory • Changing from a 32-bit to a 64-bit processor • Enabling 3GB of process space • Data Compression
+* To identify which queries are using more memory, query the sys.dm_exec_query_memory_grants DMV. Just be careful when running queries against this DMV using a JOIN or an ORDER BY statement; if your system is already under memory stress, these actions can lead to your query needing its own memory grant.
+* In SQL Server 2012, a 32-bit instance of SQL Server is limited to accessing only 3GB of memory. The limitations on SQL
+Server for memory go from 3GB to a limit of up to 8TB depending on the version of the operating system and the specific processor type.
+* Data compression has a number of excellent benefits for storage and retrieval of information. It has an added benefit that many people aren’t aware of: while compressed information is stored in memory, it remains compressed. This means more information can be moved while using less system memory, increasing your overall memory throughput. All this does come at some cost to the CPU, so you’ll need to keep an eye on that to be sure you’re not just transferring stress.
 * 
