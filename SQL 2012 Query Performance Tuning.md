@@ -1,5 +1,5 @@
 # SQL SERVER 2012 Query Performance Tuning #
-**Current Status - Page No : 105** 
+**Current Status - Page No : 109** 
 * if you want to read a book on database design with an emphasis on introducing the subject, I recommend reading
 Pro SQL Server 2008 Relational Database Design and Implementation by Louis Davidson et al (Apress, 2008). 
 * read the Microsoft white paper “SQL Server 2005 Waits and Queues” http://download.microsoft.com/download/4/7/a/47a548b9-249e-484c-abd7-29f31282b04d/Performance_Tuning_Waits_Queues.doc
@@ -90,4 +90,7 @@ CROSS APPLY sys.dm_exec_sql_text(r.plan_handle) t ;
 * Even though the number of logical reads can also be obtained from the Extended Events, you get another benefit when using STATISTICS IO. The number of logical reads for a query shown by Profiler or the Server Trace option increases as you use different SET statements (like STATISTICS) along with the query. But the number of logical reads shown by STATISTICS IO doesn’t include the additional pages that are accessed as SET statements are used with a query. Thus, STATISTICS IO provides a consistent figure for the number of logical reads.
 
 ##Chapter 4: Index Analysis##
+* A heap is just an unordered stack of data with a row identifier as a pointer to the storage location. This data is not ordered or searchable except by walking through the data, row-by-row, in a process called a scan.
+* with a clustered index, the data is stored with the index so that the data itself is now ordered. When a clustered index is present, the pointer on the nonclustered index consists of the values that define the clustered index key. This is a big part of what makes clustered indexes so important.
+* B-tree is balanced when the leaf nodes are all at the same level from the root node. At the bottom level, all the leaf nodes are connected to each other through a doublylinked list, meaning each page points to the page that follows it, and the page that follows it points back to the preceding page. This prevents having to go back up the chain when pages are traversed beyond the definitions of the intermediate pages.
 * 
