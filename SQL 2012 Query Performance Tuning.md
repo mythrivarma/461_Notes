@@ -1,5 +1,5 @@
 # SQL SERVER 2012 Query Performance Tuning #
-**Current Status - Page No : 147** 
+**Current Status - Page No : 148** 
 * if you want to read a book on database design with an emphasis on introducing the subject, I recommend reading
 Pro SQL Server 2008 Relational Database Design and Implementation by Louis Davidson et al (Apress, 2008). 
 * read the Microsoft white paper “SQL Server 2005 Waits and Queues” http://download.microsoft.com/download/4/7/a/47a548b9-249e-484c-abd7-29f31282b04d/Performance_Tuning_Waits_Queues.doc
@@ -126,4 +126,7 @@ result for a given query. (A list of deterministic and nondeterministic function
 * An indexed view need not be referenced in the query for the query optimizer to use it during query execution. This allows existing applications to benefit from the newly created indexed views without changing those applications. The query optimizer considers indexed views only for queries with nontrivial cost. You may also find that the new columnstore index will work better for you than indexed views, especially when you’re preaggregating data.
 * Certain constructs such as AVG are disallowed in view (Only in indexed views?). (For the complete list of disallowed constructs, refer to “SQL Server Books Online.”) If aggregates are included in the view, as in this one, you must include COUNT_BIG by default.
 * Even though the queries are not modified to refer to the new indexed view, the optimizer still uses the indexed view to improve performance. Thus, even existing queries in the database application can benefit from new indexed views without any modifications to the queries(So, Query on a base table can use Index from Indexed view?. Looks like it. Chec pages 144,145,146). If you do need different aggregations than what the indexed view offers, you’ll be out of luck. Here again the columnstore index shines.
+* Compressing an index means getting more key information onto a single page. This can lead to significant performance improvements because fewer pages and fewer index levels are needed to store the index. There will be overhead in the CPU as the key values in the index are compressed and decompressed, so this may not be a solution for all indexes. Memory benefits also because the compressed pages are stored in memory in a compressed state.
+* There are two types of compression: row- and page-level compression. Nonleaf pages in an index receive no compression under the page type
+* Compression has a series of impacts on other processes within SQL Server, so further understanding of the possible impacts as well as the possible benefits should be explored thoroughly prior to implementation. In most cases, the cost to CPU is completely outweighed by the benefits everywhere else, but you should test and monitor your system.
 * 
