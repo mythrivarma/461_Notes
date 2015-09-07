@@ -24,4 +24,12 @@
 * When we have source file in a mapping, the source file should be present in the informatica Server (There is an option if file does not exist on server, but its not covered in session) and in the Session-Mapping Properties, we have to specify the Directory of the Source file (which is a directory on the INformatica Server). Same goes with the target. 
 * If we want to do something like 'Shared Data Sources' (one source is being used in multiple projects), then instead of creating a souces in our project folder, We need to create a Global Folder (accessible by all projects in the ambit) and create a source there. 
 * While picking data from Source file, We have two options: Direct and Indirect. Direct means actual file. Indirect option means, we will prepare a list of Paths and file names and place them in a text file and point to that text file. 
-* 
+* I-O-V in ports corresponding to Input, Output and Variable.
+* To concatinate two Strings, we can use || or we can use Concat Function
+* To Comment something in Expressions, We can use --
+* After creating a Variable in Ports, we again need to assign it to Output POrt by creating a new column.
+* You have to SAVE the mapping for it to be able to appear in the mapping selection in the Session. 
+* Everytime we change a Mapping, we need to go to the WorkFlowManager and right click the Mapping and Refresh it as well. 
+ 
+##Day 2##
+*
