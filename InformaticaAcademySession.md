@@ -32,4 +32,14 @@
 * Everytime we change a Mapping, we need to go to the WorkFlowManager and right click the Mapping and Refresh it as well. 
  
 ##Day 2##
-*
+* If we want to connect to a different souce (which is not in Power Center Designer), Like a mainfram, we need some other client tools like Informatica Power Express??
+* Active and Passive Transformations (Active= no of incoming rows may be different from Outgoing rows (example Filter); passive = incoming and outgoing rows are equal, Example Expression transformation.)
+* Router Transformation has Groups where we can give conditions. CHeck router transformation and compare it with Conditional Split (Example if a>100 and a>200 and the value is 300, then will it go to both parts? Check in both SSIS and Informatica)
+* 'Currently Processing FileName' option can be used to do any action specific to the file that is being processed (like Capturing the number of records etc)
+* WHen we use BULK Load operation, Performance will imporve at the cost of not Logging the transaction and hence recovery cannot be done. So, It is preferable NOT to use Bulk Load option.
+* 'Truncate Target Table' option should be enabled in the Session when we need the Target to be truncated before loading.
+* 'Recovery Strategy' in Session Properties lets us do Check-point(in SSIS) like Actions.
+* Session Level Connections will overwrite the connections defined in Designer. For Example, if we define a Delimiter as ',' in Designer and '|' in Session, When we run the Job, it will be looking for '|' only from the source file.
+* Re-usable Session can be used across Workflows. You can aslo Ctrl-C and Ctrl-V to use a session from one work in other flow. But doing so will not come under reusability since changing one instance of the session will not affect the other instance. Also, a non re-usble session can be promoted to a re-usable session but vice-versa is not possible.
+* Sort Transformation is an 'Active' transformation since it has an option to select 'Distinct' records which may affect the output row count. Sorting will be performed in the port order.
+* 
