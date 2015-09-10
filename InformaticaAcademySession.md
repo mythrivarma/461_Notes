@@ -55,5 +55,11 @@
 * Java transformation: We can add our own log statemetes to the session log using java. There is no looping functionality in-built in informatica (like for-each in SSIS). We can use java transformation for looping-> check how.
 * PMCMD command to trigger workflow (command line utility for informatica)
 * Joiner Transformation: Master, Detail, Index Cache and Data Cache - Check. Index Cache will always be created on Join Condition. It is preferable to use Sorted input for joiner just like for Aggregator due to performance reasons.
-* 
+* In Work Flow TASKS, apart from session, we can also create Command task and Mail Task. In command task, we cannot give Multiple command lines in a single command port. we have to write only one command per command port. Instead of creating multiple command ports, we can just create a file with all commands and then write a single command to call the file. The command ports will be run sequentially so if you want to run multiple commands parallelly then you need to create a new command task.
+* SQL Transformation is like 'OLEDB Command Task' in SSIS. This is a performance spoiler and try to avoid it. if it is used, check the COMMIT option since informatica will not commit the SQL by default. This behaviour is explicit only to this transformation.
+* In work flow monitor, options STOP and ABORT are different just like DELETE and TRUNCATE. ABORT doesnt care about transactions and all and just kills everything. 
+* In work Flow, we can give and expression in LINK properties so that if status = FAILED, then proceed to next task. This can be used for Error Handling. 
+* Check 'suspend on error' option and recovery options in work flow. 
+
+##Day 4## 
 * 
