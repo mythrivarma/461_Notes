@@ -75,6 +75,10 @@ In the WorkFlow > Edit > Properties, we can give parameter file path. Similarly 
 
 * Parameters and Variables in Mapping : Difference is Paremeter values do not change. But Variable value can be changed during the course of execution. 
 * Just like in SSIS, if we give initial value in Mapping and also in Parameter file, the Prameter file value will have highest priority and will overwrite the Mapping value. Check informatica HELP MANUAL for Variables and Parameters.
-* 
+* Insert and Update Strategy: in two places -> properties and Mapping tab of session properties. the keys that we create in informatica mapping, will not affect the DB tables. They are only logical in nature. 
+* When we use 'Update as insert', We need to use (check) 'insert' as well?
+* Not all scenarios (insert/Update) can be handled from Session properties. THen we have to Update Stratery Transformation in the Mapping. When using this Transformation, we need to set the session source Update Strategy as 'Data Driven'. In the Update Strategy Transformation, we will give Expression as DD_UPDATE or DD_INSERT (DD for Datadriven) based on what we want the Source Update Strategy to be. 
+* Debug Mode: Mappings>Debugger> Start Debugger. 'Create a debug sessoin instance' 'Discard target Data' option will ensure that physicaly the target will not have any kind of impact. 
+
 
 
