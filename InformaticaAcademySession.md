@@ -66,7 +66,7 @@
 [FolderName.WF:<WorkFlowName>.ST:<SessionName>]
 $$Var1= 
 $$Var2 = value
-$DBCOnnection_QIAUT = ''
+$DBCOnnection_QIAUT = '' (All DBCOnnections Should Start with $DBConnection??)
 
 Check what is the difference between $$ and $.
 The first line in the above syntax says that the parameters are at Session Level. We can define parameters at global level (using [GLOBAL]), WOrk FLow level (remove ST:.. from above syntax) and session level.
