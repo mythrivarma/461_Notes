@@ -62,4 +62,19 @@
 * Check 'suspend on error' option and recovery options in work flow. 
 
 ##Day 4##
+* '.prm' is parameter file (Not mandatory. it is just to differentiate from other files as a good practice). following is the syntax for Parameter file 
+[FolderName.WF:<WorkFlowName>.ST:<SessionName>]
+$$Var1= 
+$$Var2 = value
+$DBCOnnection_QIAUT = ''
+
+Check what is the difference between $$ and $.
+The first line in the above syntax says that the parameters are at Session Level. We can define parameters at global level (using [GLOBAL]), WOrk FLow level (remove ST:.. from above syntax) and session level.
+
+In the WorkFlow > Edit > Properties, we can give parameter file path. Similarly in Session also we can give. 
+
+* Parameters and Variables in Mapping : Difference is Paremeter values do not change. But Variable value can be changed during the course of execution. 
+* Just like in SSIS, if we give initial value in Mapping and also in Parameter file, the Prameter file value will have highest priority and will overwrite the Mapping value. Check informatica HELP MANUAL for Variables and Parameters.
 * 
+
+
