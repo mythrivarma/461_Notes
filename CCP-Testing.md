@@ -9,7 +9,7 @@
 * where should we update a snapshot in quality center : Details, Description, Attachements? 
 * Age = 200 what should this he considered. Illogical? invalid? Negative test case since it opens up other faulty scenarios?
 * After raising the defect to dev, he said that the code is correct but the test data is wrong so what should we update status in QC- Re-test? Reject? Re-open? 
-* what are the equivalent cases (actual requirement is a text box which accepts 3-15 characters, alphanumeric, first two are letters) options a) less than 3 characters, Alphanumeric, First two are not letters b)same as requirement c) just like option a but negation on 2nd requirement instead of 1 and 3.
+* what is the equivalent classes (actual requirement is a text box which accepts 3-15 characters, alphanumeric, first two are letters) options a) less than 3 characters, Alphanumeric, First two are not letters b)same as requirement c) just like option a but negation on 2nd requirement instead of 1 and 3.
 * Client told that May release (both Major and Minor) dint go well and he is not happy with the quality. so what should we consider while analyising the cause (select multiple) a. complexity  b. Categorize defects c. high level and low level requirements d. dont remember
 * in Audit the auditor asked to show our progress on improving defect effeciency so what should we show? a) some defect trend chart of past 8 months b) defect trend of previous quarter c) Defect Density chart d) no of defects in previous and current month. 
 
