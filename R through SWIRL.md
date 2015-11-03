@@ -70,8 +70,9 @@ type rm(list=ls()) to clear your workspace.
 * a<- 1:3 and b <- a <2 now b is TRUE, FALSE, FALSE. SUM(b) will be 1 because SUM() function will treat TRUE as 1 and FALSE as 0.
 * NaN means Not a Number. (example 0/0)
 * Inf means Infinity . Inf+1 = Inf . Inf - Inf will also give NaN
-* 
+
 #Lesson 6#
+* 
 
 
 
