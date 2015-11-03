@@ -40,6 +40,39 @@ Using the args() function on a function name is also a handy way to see what arg
 
 type rm(list=ls()) to clear your workspace.
 
+#lesson 3 : Sequences of Numbers#
+* 1:10 gives 1  to 10
+* pi:10 gives 3.14 to 9.14 (increment by 1)
+* 15:1 gives 15 to 1 decrement by 1
+* for functions related help, we give ?functionname for operator, we need to give ?<backtick>:<backtick> (ie, the operator in between two backticks (left of 1 key in the keyboard).
+* seq(1,10, by 0.5) will start with 1 , increment by .5 and end with 10. So, seq() function can be used for custom intervals. 
+* seq(1,10, length = 30) will split the range into 30 items seperated by equal intervals
+* seq(along.with =20) and seq_along(20) give 1 to 20 values.
+* rep() function is to replicate. rep(0, times = 40) will give 40 zeros. rep(c(1,2,3), times = 10) will repeat 1,2,3 ten times. rep(c(1,2,3), each =10) will given 10 is, 10 2s and then 10 3s.
+
+#Lesson 4 : Vectors#
+* the simplest and most common data structure in R is vector. 
+* two types of vectors : Atomic and Lists (Atomic have same dataType, Lists can have Multiple data Type)
+* Types of Atomic Vectors (Numeric, logical, Character, Integer, complex)
+* Logical Vectors (TRUE, FALSE, NA (for Not available))
+* a <- C(1,2,3) and then b<- a <  2. the value of b wil be (TRUE,FALSE,FALSE) and Not (1)
+* Logical Operators are >, <, >=, <=, == (for exact equality) and != 
+* A|B is A OR B. A&B is A AND B. !A is Negation of A.
+* just like in bodmAS, AND takes precedence over OR (think of AND as Addition and OR as Subtraction just for the sake of remembering)
+* for character vector, we need to give objects in doube quotes (single quotes also worked).
+* paste() function concatenates values in a vector. Example paste(c("My","Name","is"), collapse="-") will give My-Name-is as a result. paste(1:3,c("a","b","c"), sep = '-') will give a vector with 3 objects "1-a" "2-b" "3-c" in this example, the numeric values 1,2,3 are COERCED into character values so that they can be combined with a,b,c.
+* LETTERS is an inbuilt variable in R containing character vector of all 26 alphabets in english
+
+#Lesson 5: Missing Values#
+* NA in R is for Not Available or Missing (in Statistics)
+* Any Operation involving NA genrally yeilds NA
+* NA == NA give NA. is.na(NA) gives TRUE. just like NULL in SQL.
+* a<- 1:3 and b <- a <2 now b is TRUE, FALSE, FALSE. SUM(b) will be 1 because SUM() function will treat TRUE as 1 and FALSE as 0.
+* NaN means Not a Number. (example 0/0)
+* Inf means Infinity . Inf+1 = Inf . Inf - Inf will also give NaN
+* 
+#Lesson 6#
+
 
 
 
