@@ -81,8 +81,23 @@ type rm(list=ls()) to clear your workspace.
 *  vect <- c(foo = 11, bar = 2, norf = NA) will create a vector named vect with NAMED ELEMENTS. now names(vect) will give the element names. alternatively, you can first create a vector and add names to elements later like this vect2<- c(11,2,NA) and then names(vect2) <- c("foo","bar", "norf"). Now if you want to check if vect and vect2 are identical, we can use identical(vect,vect2) function which gives Boolean TRUE as result.
 *  Now, in the above example vect["bar"] will give the 2nd element of the vector. Now we have to give the bar value in quotes here because this is index and not a function and bar is not a vector and just an element name. vect[c("bar","foo")] will give 2nd and 1st elements of the vector vect.
 
-#Lesson 7 : #
+#Lesson 7 Matrices and Dataframes : #
+*  Matirces and Data Frames are rectangular data types which contain tabular data with rows and columns. 
+*  Matrices can contain only single class of data while data Frames can contain many different classes of data. 
+* A matrix is a atomic vector with a dimension attribute. example a<-1:20 and dim(a) will give nothing. dim(a) <- c(4,5) will change this vector 'a' to a matrix with 4 rows and 5 columns. Now if you give dim(a) you can see the result as 4 and 5. Observe here that dim function can be used to both assign a dimension attribute and to extract the dimension attribute information like we have seen in the preceding example. attributes() funtion will also give the dimension attribute information. 
+* matrix() function can be used to create a matrix directly . Example : my_matrix2 <- matrix(1:20, nrow = 4, ncol = 5, byrow = FALSE). byrow = FALSE means that the data will be filled column wise. identical() function can be used to compare two vectors /matrices
+* cbind() function will bind a character vector to a matrix which means if there is a matrix (a) with 4x5, and a character vector (b) with 4 patient names, then if we do cbind(a,b) then a new matrix will be created which is of 4x6 and the 6th column will have attrribute name as b. In this example we can also observe the difference between dimension and attribute. if we store the value new matrix in c and give dim(c), we get only 4x6. if we give attrributes(c) we get dimension 4x6 as well as dimension names which are all null for rows and all null except b for columns. 
+* Also, if a decimal vector is cbind()'ed with character matrix, the resulting matrix will be implicity COERCED as character since character takes precedence. This is because, as we discuseed in the definition of matrix, the matrix can have only single class of data. -- try how to do explicit coersion.
+* if we want to avoid coersion and have multiple classes of data, we can go for data.frames() function. in this case, if we use data.frames(a,b) then even if a is decimal vector and b is character matrix, the resulting data frame will not be coerced and the elements will retain their origional class of data types. 
+* you can check if a variable is a vector or matrix or a data.frame by using class() function. 
+* we can use colnames() function to assign dimension names to the data.frames just like how we used dim() function to assingn dimension name to a matrix earlier. 
+
+#Lesson 8 : Logic#
 * 
+
+
+
+
 
 
 
