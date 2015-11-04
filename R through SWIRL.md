@@ -71,7 +71,17 @@ type rm(list=ls()) to clear your workspace.
 * NaN means Not a Number. (example 0/0)
 * Inf means Infinity . Inf+1 = Inf . Inf - Inf will also give NaN
 
-#Lesson 6#
+#Lesson 6: Subsetting vectors#
+* The way you tell R that you want to select some particular elements (i.e. a 'subset') from a vector is by placing an 'index vector' in square brackets immediately following the name of the vector.
+*  x[1:10] to view the first ten elements of x. Many programming languages use what's called 'zero-based indexing', which means that the first element of a vector is considered element 0. R uses 'one-based indexing', which (you guessed it!) means the first element of a vector is considered element 1. x[c(3,5,7)] will give 3rd 5th and 7th elements of the vector x.
+*  four type of index vectors : Logical Vectors, vectors of Postitve Integers, vectors of Negative integers, vectors of Character Strings. 
+*  x[is.NA(x)] will give all NA elements of x. x[x>0] will give all elements in x which are +ve and also all NA values.This is Unlike in SQL , where if we give x>0 , we get only +values and no NULL values. The R equivalent of SQL's x>0 is x[!is.na() & x>0 ] -- These are Logical indexes. x[1:10] or x[c(5,7)] are examples of Positive integer indexes
+*  if a vector x has 4 numeric elements, if we give x[0] , we get numeric(0) which is not useful. if you give x[5], we get NA. only x[1:4] will give us the actual values.
+*  x[c(-2,-10)] will give all elements of th vector except 2nd and 10th . THis is and example of Negative integer index. Short cut way for this syntax is x[-c(2,10)]
+*  vect <- c(foo = 11, bar = 2, norf = NA) will create a vector named vect with NAMED ELEMENTS. now names(vect) will give the element names. alternatively, you can first create a vector and add names to elements later like this vect2<- c(11,2,NA) and then names(vect2) <- c("foo","bar", "norf"). Now if you want to check if vect and vect2 are identical, we can use identical(vect,vect2) function which gives Boolean TRUE as result.
+*  Now, in the above example vect["bar"] will give the 2nd element of the vector. Now we have to give the bar value in quotes here because this is index and not a function and bar is not a vector and just an element name. vect[c("bar","foo")] will give 2nd and 1st elements of the vector vect.
+
+#Lesson 7 : #
 * 
 
 
