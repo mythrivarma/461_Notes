@@ -115,9 +115,11 @@ type rm(list=ls()) to clear your workspace.
 *  if you want to see the source code for any function, just type the function name with out any parenthesis. 
 *  consider this function. remainder <- function (num, divisor = 2) { num %% divisor}. Now what can learn from this is: 1) for remainder, use %%. 2) divisor has a default value. so you can just give remainder(5) and you will get 1 as result. You can also give remainder(8,3) and get 2 as answer where default value is overwritten by 3. you can give remainder(8,3) OR remainder(divisor = 3, num =8) OR remainder(3, num =8) so the order of arguments is not relevant once you explicity mention the argument names while calling the function. you can also use the first letters of argument names and assign value while calling functions like in powershell. But stay away from it since its not a good practice. 
 *  Also, you can give args(remainder) to get the argument details of the function remainder() that you created. THis is interesting! args() is a function, remainder() is a function, yet remainder was an argument for args(). Yes it's true: you can pass functions as arguments! This is a very powerful concept.
-*  
-
-
+*  while passing function as an argument to another function, we should not put that argument in quotes. Example:  some_func <- function(abc, val) {abc(val)} here, if you give some_func(sum,c(1,5)), you will get 6. But if you give some_func("sum",c(1,5)), you will get an error since the function definition is to return abc(val) and hence it is expecting a function as parameter and not a character value. This idea of passing a function as an argument to another function is an important concept in programming.
+* you can pass a function as an argument without first defining the passed function. Functions that are not named are appropriately known as anonymous functions. Example: using the somee_func function that has been created in the above step, we can do this some_func(function(x){x+1},6), the result is 7. This function(x){x+1} is an anonymous function because , it is not defined (doesnt have a name), but we still executed that function as a part of evaluate function. 
+* if ellipses(...) is an argument in a function (example paste() function), then all the arguments after ellipses MUST have default value. So, as a good practice, if you want to have ellipses as an argument in your custom defined functions, have the ellipse as the last argument so that you dont have to bother about the default values of argumnets after it. 
+* consider this function telegram <- function(...){ paste("START",... ,"STOP" )}. Now telegram() function can take any number of arguments (as a part of ellipses) and it will just paste those arguments as a character vector with space in between and place START at the begining and STOP at the end of that chacter vector. 
+* 
 
 
 
