@@ -93,6 +93,21 @@ type rm(list=ls()) to clear your workspace.
 * we can use colnames() function to assign dimension names to the data.frames just like how we used dim() function to assingn dimension name to a matrix earlier. 
 
 #Lesson 8 : Logic#
+* Logical operators are ==, <, >, <=, >=, !, &, &&, |, || 
+* the difference between & and && is that & applies to all elements of the operands and && applies to first element alone. 
+* example: TRUE & c(TRUE,FALSE,FALSE) will give TRUE, FALSE ,FALSE (since this is equivalent to c(TRUE, TRUE, TRUE) & c(TRUE, FALSE, FALSE) after rotation is applied due to unequal elements in the two vectors). But if you give TRUE && c(TRUE, FALSE, FALSE), the result is only TRUE. Here, though rotation is applied, only the first element is evaluated. remaining all are ignored.
+* same applies to | (OR) operator and | and || have the same difference. 
+* & is called vectorised version and && is called non vectorised version of AND operator due to obvious reason that && will return only one element. same with | and ||
+* & has precedence over | if no brackets are provided. 
+* isTRUE() function will return TRUE if argument is TRUE ELse, will return FALSE. i tried to pass numeric argument to this function instead of  a logical TRUE or FALSE argument. example isTRUE(3) and it returned false. check why?
+* identical('hello','Hello') will give FALSE since R is case sensitive. i tried identical(xor,'xor') and it returned FALSE but i thought it would return an error since first argument did not have quotes. but since xor is a function in R, it returned some value (may be character) and it did not match with 'xor' and hence false. if i give identical(abc,'abc') i will get an error saying abc is not recognised.
+* xor() function is the R version for mathematically available Exclusive-OR. it returns TRUE only when one operand evalutaes to TRUE and other to FALSE.
+* sample() function gives random sampling of integers with out replacement. ie, if you give sample(10), you will get 1 to 10 numbers but in random order.
+* the which() function takes logical VECTOR as an argument and returns indices (aka dimensions?) of that vector that are true. example: which(c(TRUE, FALSE, TRUE)) would return c(1,3)
+* the any() and all() functions also take logical vectors as arguments. any() retruns TRUE if any of the elements in the vector is TRUE and all() returns TRUE when ALL the elements in the vector are TRUE.
+* At the end of this lesson, this message came "That's all for this introduction to logic in R. If you really want to see what you can do with logic, check out the control flow lesson!". But there is no control Flow lesson in swirl R programming course. Check 'take me to the swirl course repository' option to see if it exists. Else check R programming course in Coursera if any such chapter exists.
+
+#Lesson: 9 Functions#
 * 
 
 
