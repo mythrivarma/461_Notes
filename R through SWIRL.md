@@ -105,7 +105,7 @@ type rm(list=ls()) to clear your workspace.
 * sample() function gives random sampling of integers with out replacement. ie, if you give sample(10), you will get 1 to 10 numbers but in random order.
 * the which() function takes logical VECTOR as an argument and returns indices (aka dimensions?) of that vector that are true. example: which(c(TRUE, FALSE, TRUE)) would return c(1,3)
 * the any() and all() functions also take logical vectors as arguments. any() retruns TRUE if any of the elements in the vector is TRUE and all() returns TRUE when ALL the elements in the vector are TRUE.
-* At the end of this lesson, this message came "That's all for this introduction to logic in R. If you really want to see what you can do with logic, check out the control flow lesson!". But there is no control Flow lesson in swirl R programming course. Check 'take me to the swirl course repository' option to see if it exists. Else check R programming course in Coursera if any such chapter exists.
+* At the end of this lesson, this message came "That's all for this introduction to logic in R. If you really want to see what you can do with logic, check out the control flow lesson!". But there is no control Flow lesson in swirl R programming course. Check 'take me to the swirl course repository' option to see if it exists. Else check R programming course in Coursera if any such chapter exists. --update: Control Flow is nothing but IF, ELSE, REPEAT, FOR, APPLY etc in R. THere is a seperate chapter in R Plural Sight course - Notes. Pls check.
 
 #Lesson: 9 Functions#
 * Sys.Date() function will give date in 'YYYY-MM-DD' Fromat (Based on your computers environment). 
