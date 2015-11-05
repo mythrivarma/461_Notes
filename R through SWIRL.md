@@ -108,7 +108,14 @@ type rm(list=ls()) to clear your workspace.
 * At the end of this lesson, this message came "That's all for this introduction to logic in R. If you really want to see what you can do with logic, check out the control flow lesson!". But there is no control Flow lesson in swirl R programming course. Check 'take me to the swirl course repository' option to see if it exists. Else check R programming course in Coursera if any such chapter exists.
 
 #Lesson: 9 Functions#
-* 
+* Sys.Date() function will give date in 'YYYY-MM-DD' Fromat (Based on your computers environment). 
+* mean() function takes vector as an input (argument) and gives the mean value of all elements in the vector. Example: mean(c(2,3,5)) will give 3.3333
+* syntax : boring_function <- function(x) {x} will create a function called boring_function() with one argument x and will return the value of x. you can also put additional logic in those {} . The last expression to be evaluated with in {} will be returned as an output
+* To understand computations in R, two slogans are helpful: 1. Everything that exists is an object. 2. Everything that happens is a function call.
+*  if you want to see the source code for any function, just type the function name with out any parenthesis. 
+*  consider this function. remainder <- function (num, divisor = 2) { num %% divisor}. Now what can learn from this is: 1) for remainder, use %%. 2) divisor has a default value. so you can just give remainder(5) and you will get 1 as result. You can also give remainder(8,3) and get 2 as answer where default value is overwritten by 3. you can give remainder(8,3) OR remainder(divisor = 3, num =8) OR remainder(3, num =8) so the order of arguments is not relevant once you explicity mention the argument names while calling the function. you can also use the first letters of argument names and assign value while calling functions like in powershell. But stay away from it since its not a good practice. 
+*  Also, you can give args(remainder) to get the argument details of the function remainder() that you created. THis is interesting! args() is a function, remainder() is a function, yet remainder was an argument for args(). Yes it's true: you can pass functions as arguments! This is a very powerful concept.
+*  
 
 
 
