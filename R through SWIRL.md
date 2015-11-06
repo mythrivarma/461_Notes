@@ -121,15 +121,10 @@ type rm(list=ls()) to clear your workspace.
 * consider this function telegram <- function(...){ paste("START",... ,"STOP" )}. Now telegram() function can take any number of arguments (as a part of ellipses) and it will just paste those arguments as a character vector with space in between and place START at the begining and STOP at the end of that chacter vector. 
 * if you want to create a function with ellipses as parameters, then we need to unpack the arguments in the function logic. Also, we have to explicitly use the argument names while calling the function. These argument names can be found in the definition of the function (where we define them while unpacking) Example: 
 mad_libs <- function(...){
-  # Do your argument unpacking here!
-  args <- list(...)  #args is just a variable name and not any syntax here.
+  args <- list(...)  ##args is just a variable name and not any syntax here.
   place <- args[["place"]]
   adjective <- args[["adjective"]]
   noun <- args[["noun"]]
-  
-  # Don't modify any code below this comment.
-  # Notice the variables you'll need to create in order for the code below to
-  # be functional!
   paste("News from", place, "today where", adjective, "students took to the streets in protest of the new", noun, "being installed on campus.")
 }
 
