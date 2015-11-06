@@ -134,6 +134,19 @@ like this : mad_libs(place = "Newyork", adjective = "good", noun = "bar")
 * +,-,*,/ are examples of binary operators (because they have two operands - left and right). In R, we can define our own operators. Example: "%p%" <- function(left, right){  paste(left,right)} See the syntax, the new operator should start and end with % also it should be enclosed in quotes while defining. Now to use it, we can do this : "I" %p% "Love" %p% "R"  this will give the result "I Love R"
 
 #lesson 10 : lapply and sapply#
+-- Try this lesson in swirl . only theory is here.
+* lapply() and sapply() are the two most important members of R's *apply family of functions, also known as loop functions
+*  These powerful functions, along with their close relatives (vapply() and tapply(), among others) offer a concise and convenient means of implementing the Split-Apply-Combine strategy for data analysis.
+*  Each of the *apply functions will SPLIT up some data into smaller pieces, APPLY a function to each piece, then COMBINE the results. A more detailed discussion of this strategy is found in Hadley Wickham's Journal of Statistical Software paper titled 'The Split-Apply-Combine Strategy for Data Analysis'.
+* Throughout this lesson, we'll use the Flags dataset from the UCI Machine Learning Repository. This dataset contains details of various nations and their flags. More information may be found here: http://archive.ics.uci.edu/ml/datasets/Flags
+* I've (creator of swirl) stored the dataset in a variable called flags. Type head(flags) to preview the first six lines (i.e. the 'head') of the dataset.
+* The 'l' in 'lapply' stands for 'list'. lapply() will always return a list.
+* x <- as.character(listname) will change the list vector (with the name listname) to character vector x.
+* sapply will return a vector or matrix (which have data elements of same class) if it understands that the result can be arranged as a matrix or a vector. If it cannot understand if the result can be arranged as a matrix or avector, it will give the result as a list. lapply will return a list always. 
+* unique() will give the unique values as an output.
+* Anonymous functions (check in previous lesson 'functions') can also be used in lapply and sapply. 
+
+#Lesson 10 : #
 * 
 
 
