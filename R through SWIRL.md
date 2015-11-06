@@ -119,10 +119,27 @@ type rm(list=ls()) to clear your workspace.
 * you can pass a function as an argument without first defining the passed function. Functions that are not named are appropriately known as anonymous functions. Example: using the somee_func function that has been created in the above step, we can do this some_func(function(x){x+1},6), the result is 7. This function(x){x+1} is an anonymous function because , it is not defined (doesnt have a name), but we still executed that function as a part of evaluate function. 
 * if ellipses(...) is an argument in a function (example paste() function), then all the arguments after ellipses MUST have default value. So, as a good practice, if you want to have ellipses as an argument in your custom defined functions, have the ellipse as the last argument so that you dont have to bother about the default values of argumnets after it. 
 * consider this function telegram <- function(...){ paste("START",... ,"STOP" )}. Now telegram() function can take any number of arguments (as a part of ellipses) and it will just paste those arguments as a character vector with space in between and place START at the begining and STOP at the end of that chacter vector. 
+* if you want to create a function with ellipses as parameters, then we need to unpack the arguments in the function logic. Also, we have to explicitly use the argument names while calling the function. These argument names can be found in the definition of the function (where we define them while unpacking) Example: 
+mad_libs <- function(...){
+  # Do your argument unpacking here!
+  args <- list(...)  #args is just a variable name and not any syntax here.
+  place <- args[["place"]]
+  adjective <- args[["adjective"]]
+  noun <- args[["noun"]]
+  
+  # Don't modify any code below this comment.
+  # Notice the variables you'll need to create in order for the code below to
+  # be functional!
+  paste("News from", place, "today where", adjective, "students took to the streets in protest of the new", noun, "being installed on campus.")
+}
+
+Now, to call this mad_libs() function, we need to explicitly give argument names defined in the function.
+like this : mad_libs(place = "Newyork", adjective = "good", noun = "bar")
+--check how we are able to call paste function with out explicitly mentioning the argument names eventhough the paste function has ellipses as an argument. check the code of paste() function
+* +,-,*,/ are examples of binary operators (because they have two operands - left and right). In R, we can define our own operators. Example: "%p%" <- function(left, right){  paste(left,right)} See the syntax, the new operator should start and end with % also it should be enclosed in quotes while defining. Now to use it, we can do this : "I" %p% "Love" %p% "R"  this will give the result "I Love R"
+
+#lesson 10 : lapply and sapply#
 * 
-
-
-
 
 
 
