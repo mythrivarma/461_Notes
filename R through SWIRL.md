@@ -168,7 +168,40 @@ like this : mad_libs(place = "Newyork", adjective = "good", noun = "bar")
 * str() is actually a very general function that you can use on most objects in R. Any time you want to understand the structure of something (a dataset, function, etc.), str() is a good place to start.
 
 #Lesson 13: Simulation#
-* 
+* sample()- to randomly pick data from input. replace = TRUE argument means if we are picking 4 elements from six elements. The element already picked (lets say as first element) can again be picked as 2nd element. If replace = FALSE then the same element cannot be picked. Its like if picking 4 balls from a bag of 6 balls. when replace = true, we can pick 6*6*6*6 combinations. if replace = false, we can pick 6*5*4*3 combinations. we can aslo make use of another argument in the same function which is prob and set the probablility of picking any element while the function randomly picks elements. 
+* Each probability distribution in R has an r*** function (for "random"), a d*** function (for "density"), a p*** (for "probability"), and q*** (for "quantile"). We are most interested in the r*** functions in this lesson, but I encourage you to explore the others on your own. examples: rbinom, dbinom, pbinom, qbinom
+* Similar to rbinom() we can use R to simulate random numbers from many other probability distributions. we can use rnorm() for this.
+* rpois() function can generate random values from poisson distribution.
+* there are different funcitons like hist() colMeans() functions covered in the course. have a look.
+*  All of the standard probability distributions are built into R, including exponential (rexp()), chi-squared (rchisq()), gamma (rgamma()), .... Well, you see the pattern.
+
+#Lesson 14 : Dates and Times#
+* Dates are represented by the 'Date' class and times are represented by the 'POSIXct' and 'POSIXlt' classes. Internally, dates are stored as the number of days since 1970-01-01 and times are stored as either the number of seconds since 1970-01-01 (for 'POSIXct') or a list of seconds, minutes, hours, etc. (for 'POSIXlt').
+* do d1<-Sys.Date() now class(d1) and then unclass(d1)  and see how date is internally stored as number of dates since Jan 1 1970. but if you see the value of d1 by just giving d1, you will see the date as proper date.
+* what about dates before 1970? try this: d2 <- as.Date("1969-01-01") and then unclass(d2) now you can see a negative integer which means it is that many days before 1970 jan 1.
+* Sys.time() will give time (along with date)
+* t1 <- Sys.time() then print t1 and then class(t1) and then see the result. As mentioned earlier, POSIXct is just one of two ways that R represents time information. (You can ignore the second value above, POSIXt, which just functions as a common language between POSIXct and POSIXlt.) Use unclass() to see what t1 looks like internally -- the (large) number of seconds since the beginning of 1970. By default, Sys.time() returns an object of class POSIXct, but we can coerce the result to POSIXlt with as.POSIXlt(Sys.time()). Give it a try and store the result in t2. then try printing it, then class(t2) and then unclass(t2) and str(unclass(t2)). After seeing the results of str function, we understand that we just need to give t2$min to get minutes value. 
+* there are date and time related functions to get date parts like weekdays(), months(), quarters().
+* Often, the dates and times in a dataset will be in a format that R does not recognize. The strptime() function can be helpful in this situation. strptime() converts character vectors to POSIXlt. In that sense, it is similar to as.POSIXlt(), except that the input doesn't have to be in a particular format (YYYY-MM-DD). Here we have to give the syntax for which value in the input corresponds to year, date, hours and sec etc). 
+* Finally, there are a number of operations that you can perform on dates and times, including arithmetic operations (+ and -) and comparisons (<, ==, etc.)
+* if you give t1 - t2 then time difference will be shown in random units ?? but if you want the diffence to be shown in particular units, we can use difftime() function.
+* In this lesson, you learned how to work with dates and times in R. While it is important to understand the basics, if you find yourself working with dates and times often, you may want to check out the lubridate package by Hadley Wickham. --check this.
+
+#Lesson 15 : Base Graphics#
+* We do not cover the more advanced portions of graphics in R in this lesson. These include lattice, ggplot2 and ggvis. There is a school of thought that this approach is backwards, that we should teach ggplot2 first. See http://varianceexplained.org/r/teach_ggplot2_to_beginners/ for an outline of this view.
+* data(cars) loads the included data frame 'cars' (does this mean cars is an in-built dataframe in R-> check). Once loaded if we give ?cars, we get the help page for cars. So may be it is inbuilt -- check anyway.
+* if you give plot(cars), As always, R tries very hard to give you something sensible given the information that you have  provided to it. First, R notes that the data frame you have given it has just two columns, so it assumes that you want to plot one column versus the other. Second, since we do not provide labels for either axis, R uses the names of the columns. Third, it creates axis tick marks at nice round numbers and labels them accordingly. Fourth, it uses the other defaults supplied in plot().
+* We will now spend some time exploring plot, but many of the topics covered here will apply to most other R graphics functions. Note that 'plot' is short for scatterplot. for plot function do not type plot(cars$speed, cars$dist), although that will work. Instead, use plot(x = cars$speed, y = cars$dist).
+* Note that there are other ways to call the plot command, i.e., using the "formula" interface. For example, we get a similar plot to the above with plot(dist ~ speed, cars). However, we will wait till later in the lesson before using the formula interface.
+* The plot help page (?plot) only covers a small number of the many arguments that can be passed in to plot() and to other graphical functions. To begin to explore the many other options, look at ?par. Let's look at some of the more commonly used ones. Continue using plot(cars, ...) as the base answer to these questions.
+* Go through the course in Swirl console. there are examples about many parameters.
+* boxplot() is one more kind of plot. this kind of plot is there in Qlikview as well i dont remember the exact name there.
+* Note that we can use the same set of arguments that we explored with plot() above to add axis labels, titles and so on in boxplot() as well 
+* When looking at a single variable, histograms are a useful tool. hist() is the associated R function. Like plot(), hist() is best used by just passing in a single vector. Example hist(mtcars$mpg)
+* In this lesson, you learned how to work with base graphics in R. The best place to go from here is to study the ggplot2 package. If you want to explore other elements of base graphics, then this web page (http://www.ling.upenn.edu/~joseff/rstudy/week4.html) provides a useful overview.
+
+END of SWIRL Course - check if you can find anything useful in https://github.com/swirldev/swirl_courses which is the repository for this courses
+
 
 
 
