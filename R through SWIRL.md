@@ -146,7 +146,16 @@ like this : mad_libs(place = "Newyork", adjective = "good", noun = "bar")
 * unique() will give the unique values as an output.
 * Anonymous functions (check in previous lesson 'functions') can also be used in lapply and sapply. 
 
-#Lesson 10 : #
+#Lesson 10 : vapply and tapply #
+* in this lesson also we use the flags dataset that was used in the previous lesson.
+* str() function . take a look.
+* sapply() tries to 'guess' the correct format of the result, vapply() allows you to specify it explicitly. If the result  doesn't match the format you specify, vapply() will throw an error, causing the operation to stop. This can prevent significant problems in your code that might be caused by getting unexpected return values from sapply()
+* You might think of vapply() as being 'safer' than sapply(), since it requires you to specify the format of the output in  advance, instead of just allowing R to 'guess' what you wanted. In addition, vapply() may perform faster than sapply() for large datasets. However, when doing data analysis interactively (at the prompt), sapply() saves you some typing and will often be good enough.
+* table() function will do basic profiling(counts) of various values in the input.
+* tapply kind of brings the GroupBy clause into picture??
+* summary() function gives mean, meadian, min , max and 1st and 3rd Qu..(whats this?) values.
+
+#Lesson 12 : looking at Data#
 * 
 
 
