@@ -148,14 +148,26 @@ like this : mad_libs(place = "Newyork", adjective = "good", noun = "bar")
 
 #Lesson 10 : vapply and tapply #
 * in this lesson also we use the flags dataset that was used in the previous lesson.
-* str() function . take a look.
+* str() function . take a look. -> Structure function a very important function. 
 * sapply() tries to 'guess' the correct format of the result, vapply() allows you to specify it explicitly. If the result  doesn't match the format you specify, vapply() will throw an error, causing the operation to stop. This can prevent significant problems in your code that might be caused by getting unexpected return values from sapply()
 * You might think of vapply() as being 'safer' than sapply(), since it requires you to specify the format of the output in  advance, instead of just allowing R to 'guess' what you wanted. In addition, vapply() may perform faster than sapply() for large datasets. However, when doing data analysis interactively (at the prompt), sapply() saves you some typing and will often be good enough.
 * table() function will do basic profiling(counts) of various values in the input.
 * tapply kind of brings the GroupBy clause into picture??
-* summary() function gives mean, meadian, min , max and 1st and 3rd Qu..(whats this?) values.
+* summary() function gives mean, meadian, min , max and 1st and 3rd Quartiles(whats this?) values. 
+* summary()will give table() kind of output if input is character?? - this is only my assumption. check this. -- checked it. THis is true . THe only differenc is summary() just shows few values and categorizes rest into OTHERS if the dataset is big. but Table() will show counts of all the values.
 
 #Lesson 12 : looking at Data#
+* We'll be using a dataset constructed from the United States Department of Agriculture's PLANTS Database (http://plants.usda.gov/adv_search.html).
+* It's very common for data to be stored in a data frame. It is the default class for data read into R using functions like  read.csv() and read.table()
+* dim() function to see number of rows and columns. nrow() for rows ncol() for columns. Rows and Columns are called Observations and Variables respectively in R. 
+* object.size() to know how much space the object is occupying. 
+* names() will give the character vector of column names 
+* head(x) by default shows top 6 rows. if you want top 10 rows give head(x,10). Same way you can use tail() function to get last rows
+* check how R will determine wheter a colum is a FACTOR type of element. ?? factor is like Gender: M/F
+* the beauty of str()  function is that it combines features of other metadata functions (like dim, head, class) and gives output in a nice and readable format
+* str() is actually a very general function that you can use on most objects in R. Any time you want to understand the structure of something (a dataset, function, etc.), str() is a good place to start.
+
+#Lesson 13: Simulation#
 * 
 
 
