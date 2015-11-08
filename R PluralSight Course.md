@@ -81,6 +81,15 @@
 * like how SQL TABLE is to SSAS CUBE, MATRIX is to ARRAY. Matrix is 2 dimensional. Imagine an n dimensional matrix (3D for simlicity) and it becomes an ARRAY. Think of an array as Multiple sheets, where in each sheet is a matrix.
 
 #R-Functions#
+* R also supports RETURN syntax in functions. but its not mandatory.
+* 'Lazy Evaluation' feature is available in R functions. So x <- function(a,b,c=d) {d <- mean(a) and then o <- a+b-c and then o } here, d is the default value of the parameter c but d is being populated only after the function is called. So, at the time of calling the function, even though the value of c is not available, the function will still work because, by the time the parameter c is needed in the function logic, the value of d has already been calculated. This is lazy evaluation which is common feature in many programming languages. 
+* if you want the function to return multiple values, we can use the combination of RETURN statement and LIST functions. Example: return(list(total = a, average = b)) will return a named list with total and average values.
+* formals() and body() functions give arguments and logic details of any function
+* generally we call functino directly like sum(1:4). But there is another way as well using do.call() function. example: do.call(sum, list(a=1, b=2, c=3, d=4)) . here, second argument must be a list while using do.call(). 
+* I have not mentioned notes which overlapped with swirl() course functions lesson. So, go check siwrl() course functions lesson to see more functions related notes.
+* functions are also first class objects. So we can look into then (print and see the code), assign them to another object etc. 
+
+#R-Flow Control # 
 * 
 
 
