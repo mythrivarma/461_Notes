@@ -47,6 +47,28 @@
 * since we can do vectorised operations in R, we dont need to do Looping like in other programming languages, to do certain operations. 
 
 #R Data Structure - Part 1#
+* DataStructures: Atomic Vector, factor, list, Matrix, Dataframe, Array.
+* Any data structure has two main components. 1. what kind of data is stored. 2. In what order is it stored. the next two points will define this.
+* Atomic Vector, Martix, Array are homogenous data structures (have same type of data). List and Dataframe are heterogenous data structures.
+* Atomic Vector is 1D (dimensional), Matrix is 2D, Array is nD. List is 1D and dataframe is 2D.
+* Atomic Classes of data : Character ("A"), Numeric (4.36), Integer (3), Logical (TRUE), Complex (2+3i)
+* Atomic vectors are commonly known as Vector. In R we use 'L' to explicitly mark any numeric value as integer. So, if you want to create an Integer Vector x, it will be like this x <- c(1L, 5L, 34L)
+* For logical classes, we can either use TRUE or T example, x <- c(TRUE, T, F, FALSE) is valid.
+* In R, even a scalar value is treated as vector of length 1. so even if you give x <- 1, even though 1 is scalar, it will still be considered as vector with one element.
+* integer values can be considered as numeric as well but vice-versa is not true. Example. x <- c(3L, 45L) and is.numeric(x) will give TRUE but x <- c(23, 45) and is.integer(x) will give FALSE. 
+*  another way to create a vector is vector() function. Example: if you give vector("integer", length = 4) will give output as [1] 0 0 0 0 (since 0 is the default value for integer in this function). similarly we can create vectors of other classes as well. default for logical is FALSE and for Numeric it is 0 and for complex, it is 0+0i
+*  Subsetting : we use [] for subsetting example x <- c(1,2,3) then x[1] will give 1 (in R indexing will start with 1 unlike in other languages where it starts with 0). We can also give logical values while subsetting. Example: x[c(T,F,T)] will give output as 1,3. Even when you give x[x>2] then this is equivalent of x[FALSE,FALSE,TRUE] and you get output as 3 
+*  coercion : convert one type to another. This can be implicit (R does it for us if it can) or explict. for doing explicitly we need to use 'as'. example: as.character(1:4) will give c("1","2","3","4"). But be careful for example as.integer(c(1.23,,45,45.3)) will give c(1,45,45) which might not be what we wanted. Also, if you give as.integer(c("Raj", "giri")) will give c(NA, NA). This way of explicit conversion makes no sense we will also get a warning along with this saying NAs are due to coersion
+*  Factors: Factors come into picture when you know there are certain columns with Attributes kind of data. Like, gender, Product Type, etc. here instead of doing string comparision with these columns, it makes sense to store these values numerically (Male = 1 and female =2 etc). So, to do that, we can use factor function. If you print the value of a variable created using factor() function, if will show Male and Female with out quotes (hence they are not character type) and will also give levels : Female, male to tell the list of distinct values and thier corresponding numeric Ids (we have to understand the IDs based on order in levels output), example female= 1 and male = 2 here. the IDs are implicitly assigned by R based on alphabetical order of levels (distinct values). Remember that a factor is a one dimensional data structure.
+*  We can also implicitly define levels and thier order in factors(). Example : factor(c("A", "B", "AB", "A"), levels = c("AB", "B", "O", "A"). Here, we not only mentioned the order of levels, but also created an extra level called O. Use Factors when needed. They are more efficient than character vectors and more self describing than integer vectors (since integer vector cannot tell a new developer of the code who doesnt know the existing data that 1 = male and 2 = female)
+*  List : Heterogenous and 1 dimensional. To create a List, use the list() function
+*  When you create a list and print it, you can see the [[]] for index. This is because, the list is heterogenous and each element can have its own dimensions. So, if you give x <- list(c(1,3), c("A"))  and print x, the output will be like [[1]] [1] 1,3 and [[2]] [1] "A" if you have other element as matrix (of 2x2), then it will be [[3]] [1] 4,6 [2] 90,32 . When we subset a list, we get a list only as output (not only for lists, for any data structure, its the same). in this example, if we give y<- list[1], we get a list as output with one element which is c(1,3). You can check this by giving typeof(y). However if you want to retain the actual class of the element even after subsetting a list, you need to give y <- x[[1]]. now class(y) or typeof(y) will give numeric.
+*  difference between typeof() and class() - check this. 
+*  you can also name the elements in the list and it becomes a named list. ones elements are named, we can use names while subsetting. Example: x ["namehere"] OR x$namehere
+
+#R-Datastructures Part -2#
+* last module we saw 1D data structures. Now, 2D
+* DataFrame : most popular in R
 * 
 
 
