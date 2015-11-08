@@ -62,13 +62,25 @@
 *  Factors: Factors come into picture when you know there are certain columns with Attributes kind of data. Like, gender, Product Type, etc. here instead of doing string comparision with these columns, it makes sense to store these values numerically (Male = 1 and female =2 etc). So, to do that, we can use factor function. If you print the value of a variable created using factor() function, if will show Male and Female with out quotes (hence they are not character type) and will also give levels : Female, male to tell the list of distinct values and thier corresponding numeric Ids (we have to understand the IDs based on order in levels output), example female= 1 and male = 2 here. the IDs are implicitly assigned by R based on alphabetical order of levels (distinct values). Remember that a factor is a one dimensional data structure.
 *  We can also implicitly define levels and thier order in factors(). Example : factor(c("A", "B", "AB", "A"), levels = c("AB", "B", "O", "A"). Here, we not only mentioned the order of levels, but also created an extra level called O. Use Factors when needed. They are more efficient than character vectors and more self describing than integer vectors (since integer vector cannot tell a new developer of the code who doesnt know the existing data that 1 = male and 2 = female)
 *  List : Heterogenous and 1 dimensional. To create a List, use the list() function
-*  When you create a list and print it, you can see the [[]] for index. This is because, the list is heterogenous and each element can have its own dimensions. So, if you give x <- list(c(1,3), c("A"))  and print x, the output will be like [[1]] [1] 1,3 and [[2]] [1] "A" if you have other element as matrix (of 2x2), then it will be [[3]] [1] 4,6 [2] 90,32 . When we subset a list, we get a list only as output (not only for lists, for any data structure, its the same). in this example, if we give y<- list[1], we get a list as output with one element which is c(1,3). You can check this by giving typeof(y). However if you want to retain the actual class of the element even after subsetting a list, you need to give y <- x[[1]]. now class(y) or typeof(y) will give numeric.
+*  When you create a list and print it, you can see the [[]] for index. This is because, the list is heterogenous and each element can have its own dimensions. So, if you give x <- list(c(1,3), c("A"))  and print x, the output will be like [[1]] [1] 1,3 and [[2]] [1] "A" if you have other element as matrix (of 2x2), then it will be [[3]] [1] 4,6 [2] 90,32 . When we subset a list, we get a list only as output (not only for lists, for any data structure, its the same). in this example, if we give y<- list[1], we get a list as output with one element which is c(1,3). You can check this by giving typeof(y). However if you want to retain the actual class of the element even after subsetting a list, you need to give y <- x[[1]]. now class(y) or typeof(y) will give numeric. x$name is other alternative to x[[1]] if you have defined a named list.
 *  difference between typeof() and class() - check this. 
 *  you can also name the elements in the list and it becomes a named list. ones elements are named, we can use names while subsetting. Example: x ["namehere"] OR x$namehere
 
 #R-Datastructures Part -2#
 * last module we saw 1D data structures. Now, 2D
 * DataFrame : most popular in R
+* use data.frame() function to create a data frame , ensure that all vectors being fed as input should have same length (why? will re-cycling ). after creating a dataframe using data.frame(), if you give typeof(), you will get a list as answer. this is because the data frame is nothing but a list with vectors of equal length. --check what will happend if we give class() instead of typeof(). By default, the data.frame() will consider all character vectors as Frames. to off set this, we need explicitly mention stringAsFactors = FALSE while using the function.
+* Subsetting in dataframes is interesting. check this. we can pull data from anyparticular cell, or Row or Column or subset of certain rows and columns etc. 
+* Matirces : similar to Data frames in a way that they are two dimensional. but, only thing is they have elements of same class (Homogenous)
+* rbind() and cbind() will bind vectors row/column wise (will create a matrix if both vector are of same class? -check)
+* matrix() function to create a matrix. important parameters are no. of rows, columns and how to arrange data (by row/column)
+* subsetting matrix() is similar to data frames. We can assingn rownames() and colnames() for matix (same with data frames??)
+* rowsums() colsums() rowmeans() are some functions that operate at row/column level in matrix. 
+* We can also do Mathematical matrix transformations like Inverse and Transpose in R matrices. please refer to R documentation if need be.
+* Array <- Rarely used. Homogenous. N Dimensional
+* like how SQL TABLE is to SSAS CUBE, MATRIX is to ARRAY. Matrix is 2 dimensional. Imagine an n dimensional matrix (3D for simlicity) and it becomes an ARRAY. Think of an array as Multiple sheets, where in each sheet is a matrix.
+
+#R-Functions#
 * 
 
 
