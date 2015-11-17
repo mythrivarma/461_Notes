@@ -3,6 +3,6 @@
 *  
 
 #R Lessons#
-http://www.gettinggeneticsdone.com/2013/08/google-developers-r-programming-video.html
-http://tryr.codeschool.com/levels/1/challenges/1
-http://www.stat.cmu.edu/~cshalizi/statcomp/
+* http://www.gettinggeneticsdone.com/2013/08/google-developers-r-programming-video.html
+* http://tryr.codeschool.com/levels/1/challenges/1
+* http://www.stat.cmu.edu/~cshalizi/statcomp/
