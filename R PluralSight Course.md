@@ -90,6 +90,9 @@
 * functions are also first class objects. So we can look into then (print and see the code), assign them to another object etc. 
 
 #R-Flow Control # 
+* IF - syntax if (Condition) {lines to be executed when Condition Evaluates to TRUE}
+* use paste() for concatination
+* IF-ELSE - Syntax if (Condition) {when Condition is true} Else {WHen Condition is false}
 * 
 
 
