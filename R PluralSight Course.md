@@ -93,6 +93,12 @@
 * IF - syntax if (Condition) {lines to be executed when Condition Evaluates to TRUE}
 * use paste() for concatination
 * IF-ELSE - Syntax if (Condition) {when Condition is true} Else {WHen Condition is false}
+* Switch - Switch ( Expression, option1 = {when Expression = option1}, option2 = {}, Default Value) , where Expression returns an integer or string.
+* Vectorized if - Syntax ifelse(test vector, true vector, false Vector)
+* loops: repeat {#enter command here and it runs for infinity#}
+* repeat { commands if(condition){command BREAK}} - Breaks the repeat based on IF Condition.
+* repeat {commands if (condition) {command NEXT } command2} - here if condition is TRUE, then command2 will not run and it goes to 'commands' again
+* While - while(condition) {loops for as long as condition is TRUE}
+* for - for (iterator in vector) {commands}
 * 
-
 
