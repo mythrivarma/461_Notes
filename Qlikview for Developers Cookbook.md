@@ -22,3 +22,7 @@
 ## This entire Chapter 5 is based on VB Scripting and we need to understand VB Scripting to understand this chapter. 
 
 # Chapter 6 : Data Modelling
+
+## Try the AutoNumberHash256 function and see if it works across different load statements (ie, generates the same number for a set of values in different load statements or different sheets or different documents etc. 
+
+## 
