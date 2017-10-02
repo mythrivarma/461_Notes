@@ -27,4 +27,8 @@
 
 # Chapter 7 : Extensions
 
+##Related to HTML. Not needed at this stage by look at it in free time. 
+
+# Chapter 8 : Useful Functions
+
 ##
