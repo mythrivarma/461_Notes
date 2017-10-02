@@ -5,3 +5,6 @@
 # Chapter 4
 
 ## Observed the in a table box, Duplicate records will not be shown. Only one row will appear in the output when it has duplicates. This Caused confusion while analyzing. Remeber this and check if its the same case with Straight table. If it isnt , then use straight table for Analysing the data instead of using Table box. 
+
+## tips regarding $ Expansion in: http://www.naturalsynergies.com/q-tip-6-those-tricky-sign-expansions/ also check other tips in the website
+
