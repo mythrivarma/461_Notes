@@ -25,4 +25,6 @@
 
 ## Try the AutoNumberHash256 function and see if it works across different load statements (ie, generates the same number for a set of values in different load statements or different sheets or different documents etc. 
 
-## 
+# Chapter 7 : Extensions
+
+##
