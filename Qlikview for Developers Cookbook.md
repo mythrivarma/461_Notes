@@ -17,3 +17,8 @@
 
 # Chapter 5 : Advanced Coding
 
+## Documentation on the QlikView API is installed by default into C:\ProgramData\QlikTech\QlikView Documentation\Automation\QlikView Automation Reference.pdf. There is also a very useful APIGuide.qvw file in the same folder that allows you to search the API and view sample code.
+
+## This entire Chapter 5 is based on VB Scripting and we need to understand VB Scripting to understand this chapter. 
+
+# Chapter 6 : Data Modelling
